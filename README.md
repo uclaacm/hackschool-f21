@@ -71,8 +71,6 @@ to be determined later based on interest!
 * You'll find the [Mozilla Developer Network (MDN) documentation](https://developer.mozilla.org/en-US/docs/Web) very helpful
 for looking up the particulars of a built-in function or CSS property.
 
-* [Modern JavaScript Cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet/blob/master/readme.md)
-
 ### Learning Beyond Hackschool
 
 For HTML and CSS:
