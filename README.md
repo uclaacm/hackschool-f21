@@ -26,16 +26,13 @@ us if you have any questions or comments.
 <!-- /MarkdownTOC -->
 
 ## Basic Curriculum
-
 * Week 2: Introduction to HTML/CSS
 * Week 3: Introduction to JavaScript
-* Week 4: JavaScript and the DOM
-* Week 5: Advanced CSS
-* Week 6: Asynchronous JavaScript and APIs
-* Week 7: Responsive Design
-
-We will also be holding more advanced workshops during weeks 8–10 on topics
-to be determined later based on interest!
+* Week 4: Intro to React
+* Week 5: Props and Layout
+* Week 6: State
+* Week 7: Asynchronous + Web APIs
+* Week 9: Lifecycle
 
 ## Essential Links 
 
