@@ -1,0 +1,70 @@
+/* To the reader, these are comments in CSS! */
+
+/* 
+First example
+- Adding the .css file to the .html file
+- Rules with HTML tags
+*/
+
+p {
+    font-size: 24px;
+}
+
+li {
+    font-size: larger;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+
+/* 
+Second example
+- Classes and IDs
+*/
+
+.basses {
+    width: 200px;
+}
+
+#apple {
+    width: 40px;
+}
+
+.description {
+    color: blue;
+    text-align: center;
+}
+
+
+/* 
+Third example
+- Cascading
+- Specificity
+- Combining Selectors
+*/
+
+/* Cascading */
+p {
+    font-size: 30px;
+}
+
+/* Specificity */
+h1 {
+    color: red;
+}
+
+p.description {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.feedback {
+    color: red;
+    font-size: 50px;
+}
+
+.feedback.halloweeny {
+    color: orange;
+    text-shadow: 3px 3px black;
+}
