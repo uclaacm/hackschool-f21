@@ -26,6 +26,8 @@ Within HTML, the way that we annotate text is through tags. Tags come in a form 
 
 [Here is a good reference for HTML tags](https://www.w3schools.com/TAGS/default.ASP)
 
+Between the closing and opening tags are where we commonly find the actual text content we want displayed. For example, text between the opening and closing tags for a header would contain the actual text we want to be displayed as a header. When tags are self-closing, they do not require any text to be displayed.
+
 ### What are attributes?
 For certain tags, attributes are a way that we can add some extra information to the tag. An example of this would be `<img src="path/to/file"/>` where `src` is the attribute we are modifying.
 
