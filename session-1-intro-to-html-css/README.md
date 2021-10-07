@@ -13,9 +13,21 @@
 - [W3Schools (Quick reference to HTML and CSS properties)](https://www.w3schools.com/html/default.asp)
 
 ## What we'll be learning today
+- [HTML](#html)
 - [CSS](#css)
 
 ---
+## HTML
+### What is HTML?
+HTML stands for HyperText Markup Language. What this means is that we have a way to annotate text and display pages that link to other pages. HTML is the basis of most pages on the Internet.
+
+### What are tags?
+Within HTML, the way that we annotate text is through tags. Tags come in a form similar to `<h1>` where a certain phrase is surrounded by the less than and greater than symbols. Tags may also require a closing tag, denoted through putting a slash before the phrase (in the case of the previous example, `</h1>` would be the corresponding closing tag. Some elements are self-closing, meaning that no closing tag is required. In this workshop, we see that images are an example of a self-closing tag (denoted by putting a slash after the phrase `<img/>`).
+
+[Here is a good reference for HTML tags](https://www.w3schools.com/TAGS/default.ASP)
+
+### What are attributes?
+For certain tags, attributes are a way that we can add some extra information to the tag. An example of this would be `<img src="path/to/file"/>` where `src` is the attribute we are modifying.
 
 ## CSS
 
@@ -108,27 +120,9 @@ Note that this is done within the *HTML* file. Within your CSS file, you could d
 
 An ID is defined by a # in front of the ID name. Note that just like with classes, it's highly recommended to name them something that will help you recognize what that ID is for.
 
-Now, let's revisit and understand what cascading refers to. What would happen if body was defined multiple times within the same file? For example,
+Now we can revisit and finally understand what cascading refers to. What would happen if, within a `<p>` element that has already been styled, a sentence was given a class with its own ruleset? Or if within a `<div>` with a class applied, there was one element that had stylings for that specific HTML element, or if it was given an ID?
 
-```css
-body {
-  color: pink;
-}
-body {
-  color: green;
-}
-```
-
-Well, due to CSS's **cascading**, the rules will be applied in the order that they are written, meaning the body will have the green value, not pink! It "cascades" down to the last definition of the body, and uses that value instead.
-
-In a related note, it's important to talk about specificity as well, another feature of CSS. What would happen in the following code block, assuming both the `<p>` tag, as well as the class and ID have been given CSS rules?
-
-```html
-<p class="chicken" id="turkey">...<p>
-```
-In this case, the rules for the ID will be used!
-
-**Specificity** refers to the way which CSS determines which rules to follow. It flows from the most general rules to the most specific rules, and uses the most specific style rules applied to that element. The hierarchy is defined by the following:
+**Cascading** refers to the way which CSS determines which rules to follow. It "cascades" down from the most general rules to the most specific rules, and uses the most specific style rules applied to that element. The hierarchy is defined by the following:
 
 1) IDs are given highest priority. These rules will be followed first.
 2) Classes are second. These will be followed if there are no IDs for that specific element.
@@ -163,12 +157,3 @@ Very similarly, we can combine classes! Just as with elements and classes, any e
   text-transform: uppercase;
 }
 ```
-To apply two classes to an HTML tag, you would write it as the following.
-
-```html
-<div class="superlargetext yellingtext">...</div>
-```
-
-## Conclusion
-
-Here are all the main things to get you started on CSS! Go out and create your own site, whatever you would want, and customize it by giving some flair with CSS! Have some fun!
