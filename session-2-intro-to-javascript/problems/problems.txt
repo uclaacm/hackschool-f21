@@ -1,0 +1,69 @@
+1. Functions beginner
+You are given an array of numbers, ie. [1,2,3,4,5,6]
+
+Write a function, arraySum, that takes in this array, 
+and returns the sum of all of the numbers in the array
+
+
+2. Functions advanced
+You work for the new gym at UCLA Bruin Gym (bgym for short). 
+You are in charge of walking around the gym periodically and
+checking to see if students are wearing their masks properly in 
+the gym. At any time, if you observe that less than 80% of people
+are not wearing their masks, you are required to do announcement
+on the PA system.
+
+For this exercise, write two functions:
+
+1. An announce() function, which just prints to the console, a reminder
+   that people should be wearing their masks indoors!
+2. A checkMasks() function, which takes in an array of booleans that indicates
+   how many people in the gym are currently wearing a mask, as well
+   as the announce function in (1.). If less than 80% of the array has 
+   the value "false", then you must call the announce() function. Otherwise,
+   do nothing. 
+
+3. Objects beginner.
+In a multiplayer video game, each player has an object like so:
+
+player1: {
+    username: "TenZ",
+    health: "100",
+    armor: "50"
+}
+
+player2: {
+    username: "euglo", // what a scrub
+    health: "2",
+    armor: "0"
+}
+
+You are given an array of these objects, as well as a username.
+Write a function getHp, that takes in two arguments: 
+an array of player objects, and a target username. The function will return the
+health of the player with that username, and will return -1 if that username 
+does not exist.
+
+4. Objects advanced
+You are working at a Ralph's in Westwood. At 1am, some sus UCLA students 
+pull up wanting to buy some alchohol. You are not sure if they are legal
+or not. You ask the students for their ID to check their age, but it turns
+out that these students are CS nerdz - they have their ID in digital format.
+Worst of all, this ID is stored as a JavaScript Object (yuck~). 
+
+But oh well, you gotta get your job done. So you will need to write a 
+JavaScript function, isLegal, that takes in an ID, and returns true if 
+that student is over 21, or false if that student is below 21.
+
+Examples of student IDs:
+
+let id1 = {
+    name: "Eugene Lo",
+    DOB: new Date(1990, 11, 17)
+}
+
+let id1 = {
+    name: "Asha Kar",
+    DOB: new Date(1990, 11, 17)
+}
+
