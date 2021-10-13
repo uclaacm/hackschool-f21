@@ -1,59 +1,158 @@
-1. Functions beginner
-You are given an array of numbers, ie. [1,2,3,4,5,6]
-
-Write a function, arraySum, that takes in this array, 
-and returns the sum of all of the numbers in the array
+Boolean:
+What does this evaluate to:
+(!true && false) || ((!false || !true) && true);
 
 
-2. Functions advanced
+
+
+Types:
+What will get printed in each of these questions? (Try to figure it out without actually running the code.)
+
+console.log(1 + 11)
+console.log("1" + "11")
+console.log("hello" !== "HELLO")
+console.log(5 === 8)
+console.log(!true)
+console.log((4 < 6) && (8 !== 10))
+
+
+
+
+
+
+
+
+
+Variables:
+What will get prinhted to the console in each of the questions?
+
+let width = 10;
+let height = 2;
+console.log(width * height);
+
+let iLoveAnime = true;
+let animeIsGood = true;
+console.log(iLoveAnime && animeIsGood);
+
+let today = "Wednesday";
+console.log("Today is " + today);
+
+let uclaScore = 100;
+let uscScore = 0;
+console.log(uclaScore > uscScore);
+
+
+
+Functions 1:
+What gets printed?
+
+const yep = (n) => {
+  return n + 2;
+};
+const oh = (n) => {
+  return n * 3;
+};
+const pop = (n) => {
+  return n - 7;
+};
+const yop = (y, o, p) => {
+  return yep(y) + oh(o) + pop(p);
+};
+
+
+
+console.log(yop(5, 2, 3));
+const nah = (s) => {
+  console.log(s + s);
+};
+const nope = (s) => {
+  console.log(s + "!!!");
+};
+const no = (en, oh) => {
+  nah(oh);
+  nope(en);
+};
+no("jam", "bred");
+
+
+
+Functions 2:
+Let's write a function called animePlanner that has two arguments:
+
+1. totalHours: how many hours I can spend on watching anime today
+2. currentMinutes: the number of minutes I've already watched anime today
+
+The function should print out how many episodes of anime I can still watch today. (Fractions of episodes is fine too). 
+Each episode of anime is 20 minutes.
+
+Conditionals 1:
 You work for the new gym at UCLA Bruin Gym (bgym for short). 
 You are in charge of walking around the gym periodically and
-checking to see if students are wearing their masks properly in 
-the gym. At any time, if you observe that less than 80% of people
-are not wearing their masks, you are required to do announcement
-on the PA system.
+checking to see if students are wearing their masks properly in the gym. 
+At any time, if you observe that less than 80% of people are not wearing their masks, 
+you are required to do an announcement on the PA system.
 
-For this exercise, write two functions:
+For this exercise, write a function:
+A function called checkMasks that takes in three arguments:
+1. totalPeople: How many people are in the gym currently
+2. maskCount: How many people are currently wearing masks
+3. announcment: Some message string telling people to wear their masks
 
-1. An announce() function, which just prints to the console, a reminder
-   that people should be wearing their masks indoors!
-2. A checkMasks() function, which takes in an array of booleans that indicates
-   how many people in the gym are currently wearing a mask, as well
-   as the announce function in (1.). If less than 80% of the array has 
-   the value "false", then you must call the announce() function. Otherwise,
-   do nothing. 
+If there are more than or equal to 80% of people wearing masks, you function should print nothing and return false.
+If there are less than 80% of people wearing masks, your function should print the announcment string, and then return true. 
 
-3. Objects beginner.
+
+
+
+
+
+
+
+Objects 1:
 In a multiplayer video game, each player has an object like so:
 
-player1: {
+const playerTenz = {
     username: "TenZ",
-    health: "100",
-    armor: "50"
+    health: 100,
+    armor: 50
 }
 
-player2: {
+const playerEugene = {
     username: "euglo", // what a scrub
-    health: "2",
-    armor: "0"
+    health: 2,
+    armor: 0
 }
 
-You are given an array of these objects, as well as a username.
-Write a function getHp, that takes in two arguments: 
-an array of player objects, and a target username. The function will return the
-health of the player with that username, and will return -1 if that username 
-does not exist.
+At any point in time, our game wants to know who currently has the highest health and armor combined.
+(Health + Armor) is a directly proportional to skill. Eg. since euglo has a combined health+armor of 2, he sucks lul.
+As part of this, we want to write a function playerComparison, that takes in two arguments: 
 
-4. Objects advanced
-You are working at a Ralph's in Westwood. At 1am, some sus UCLA students 
-pull up wanting to buy some alchohol. You are not sure if they are legal
-or not. You ask the students for their ID to check their age, but it turns
-out that these students are CS nerdz - they have their ID in digital format.
+1. player1: a player object
+2. player2: another player object
+
+The function will return the username of whoever has the most health and armor combined. 
+In the event that the health and armor combined are the same, we want to return the string "Equal".
+
+
+
+
+
+
+
+
+
+
+Objects 2:
+You are working at a Ralph's in Westwood. At 1am, some sus UCLA students pull up wanting to buy some alchohol. 
+You are not sure if they are legal
+or not. 
+You ask the students for their ID to check their age, 
+but it turns out that these students are CS nerdz - they have their ID in digital format.
 Worst of all, this ID is stored as a JavaScript Object (yuck~). 
 
-But oh well, you gotta get your job done. So you will need to write a 
-JavaScript function, isLegal, that takes in an ID, and returns true if 
-that student is over 21, or false if that student is below 21.
+But oh well, you gotta get your job done. 
+So you will need to write a JavaScript function, isLegal, that takes in an ID as an argument, and returns true if that student is over 21, 
+or false if that student is below 21.
 
 Examples of student IDs:
 
@@ -62,8 +161,26 @@ let id1 = {
     DOB: new Date(1990, 11, 17)
 }
 
-let id1 = {
+let id2 = {
     name: "Asha Kar",
     DOB: new Date(1990, 11, 17)
 }
 
+
+
+
+
+
+
+
+
+
+Arrays 1
+You are the new CS professor at UCLA.
+Even though you get paid very little to teach your students (because the CS department is sh** and doesn't do anything right),
+you still want to do a good job of teaching.
+You devise a method of rewarding your students:
+If the average of all their midterm test scores is larger than 75, then you will reward your students. 
+Else, you will dish out more homework.
+
+Write a function, calculateAverage, that takes in an array of numbers (scores), and returns the average of all the numbers.

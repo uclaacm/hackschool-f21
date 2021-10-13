@@ -1,0 +1,129 @@
+Boolean:
+true
+
+Types:
+12
+111
+true
+false
+false
+true
+
+Variables:
+20
+true
+Today is Wednesday
+true
+
+Functions 1
+9
+
+"bredbred"
+"jam!!!"
+
+Functions 2
+const animePlaner = (totalHours, currentMinutes) => {
+    const totalMinutes = totalHours * 60;
+    const remainingMinutes = totalMinutes - currentMinutes;
+    const remainingEpisodes = remainingMinutes / 20;
+    return remainingEpisodes;
+};
+
+animePlanner(2, 60);
+
+Conditionals 1
+const checkMasks = (totalPeople, maskCount, announcment) => {
+    if (maskCount / totalPeople >= 0.8) {
+        return false;
+    } else {
+        console.log(announcment);
+        return true;
+    }
+};
+
+checkMasks(60, 53, "All Bruins, please mask up 1head.");
+
+Objects 1
+const playerComparison = (player1, player2) => {
+    if (player1.health + player1.armor > player2.health + player2.armor) {
+        return player1.username;
+    } else if (player1.health + player1.armor < player2.health + player2.armor) {
+        return player2.username;
+    } else {
+        return "Equal";
+    }
+};
+
+const playerTenz = {
+    username: "TenZ",
+    health: 100,
+    armor: 50
+}
+
+const playerEugene = {
+    username: "euglo", // what a scrub
+    health: 2,
+    armor: 0
+}
+
+playerComparison(player1, player2);
+
+Objects 2
+// method 1
+const isLegal = (id) => {
+    const currentTime = new Date(); // gets the current time
+    const birthDate = id.DOB.getDate();
+    const birthMonth = id.DOB.getMonth();
+    const birthYear = id.DOB.getFullYear();
+    const currentDate = currentTime.getDate();
+    const currentMonth = currentTime.getMonth();
+    const currentYear = currentTime.getFullYear();
+
+    const monthsAlive = (currentYear - birthYear)*12 + (currentMonth - birthMonth); 
+    if (birthYear + 21 < currentYear) {
+        return true;
+    } else if (birthYear + 21 === currentYear) {
+        if (currentMonth > birthMonth) {
+            return true;
+        } else if (currentMonth === birthMonth) {
+            return birthDate <= currentDate;
+        } else {
+            return false;
+        }
+    }
+    return false;
+};
+
+let id1 = {
+    name: "Eugene Lo",
+    DOB: new Date(2000, 9, 11)
+}
+
+isLegal(id1);
+
+Arrays 1:
+// method 1
+const calculateAverage = (scores) => {
+    let total = 0;
+    for (const score of scores) {
+        total = total + score;
+    }
+    return (total/scores.length);
+};
+
+// method 2: This is method does the exact same thing
+// but uses more complicated programming concepts.
+// If you don't understand this don't worry because
+// you won't need to! (unless you take CS 131)
+const calculateAverage = (scores) => {
+    let total = scores.reduce((accumulator, current) => {
+        return accumulator + current;
+    }, 0);
+
+    return (total/scores.length);
+};
+
+const midterm1Results = [80, 70, 90, 100, 40, 74, 88];
+
+calculateAverage(midterm1Results);
+

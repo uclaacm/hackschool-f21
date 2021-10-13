@@ -21,6 +21,7 @@
   - [Why JavaScript?](#why-javascript)
   - [JavaScript](#javascript)
     - [`console.log()`](#consolelog)
+    - [A note about semicolons `;`](#a-note-about-semicolons-)
     - [Comments](#comments)
     - [Types and Values](#types-and-values)
       - [Numbers](#numbers)
@@ -40,9 +41,9 @@
       - [Example: `triple`](#example-triple)
       - [Example: `helloNameWithReturn`](#example-hellonamewithreturn)
       - [Example: `loveAnime`](#example-loveanime)
-      - [Example: `animePlanner`](#example-animeplanner)
       - [**Extra:** callbacks](#extra-callbacks)
       - [Practice](#practice-2)
+      - [Problem: `animePlanner`](#problem-animeplanner)
     - [Conditionals](#conditionals)
       - [Simple `if` statement](#simple-if-statement)
       - [The `if-else` statement](#the-if-else-statement)
@@ -113,6 +114,14 @@ Throughout this workshop, we'll be using `console.log()` to print stuff out to
 our console. This prints out whatever we put inside the parentheses. For example,
 `console.log("Hello, world!")` will print `Hello, world!` to the console.
 
+### A note about semicolons `;`
+
+Usually we append a semicolon `;` at the end of every expression in JavaScript. An expression is any block of code that evaluates into something. Usually, this would be a single line of code, eg. `5 + 5;`. 
+
+You can think of an expression as a sentence in English, and we always need to use a full stop (.) to finish our sentence. Similarly, we also need a semicolon `;` to end our expressions. 
+
+Although using a semicolon is actually **optional** in JavaScript (most of the time), generally we recommend **always** adding a semicolon at the end of your expressions.
+
 ### Comments
 
 In JavaScript, there are two ways to write comments:
@@ -132,9 +141,11 @@ your code.
 ### Types and Values
 
 In JavaScript, there are several basic types of values we can use: numbers,
-booleans, and strings.
+booleans, and strings. You can think of these types as different categories of values, and we call these **types**.
 
 #### Numbers
+
+Numbers consist of any sort of numbers that you see in daily life, these include whole numbers or integers, decimals, negative numbers, and even scientific notation too.
 
 ```js
 420         // integers
@@ -181,6 +192,8 @@ We can also perform operations on values:
 < false
 ```
 
+At first sight, the triple equals sign `===` and the exclamation mark followed by the triple equals sign `!==` might look super confusing, but all they do is to check if both sides are equal/not equal.
+
 Note: If you're familiar with other programming languages (like C++, Python,
 etc.), you might be wondering why we use `===` and `!==` in JavaScript instead
 of `==` and `!=`. In JavaScript, `===` and `!==` are not the same as `==` and `!=`. We recommend you always use `===` and `!==` when writing JavaScript.
@@ -188,7 +201,14 @@ of `==` and `!=`. In JavaScript, `===` and `!==` are not the same as `==` and `!
 #### Booleans
 
 Booleans can only have two values: `true` and `false`. We can use logical operators
-with booleans: "NOT" (`!`), "AND" (`&&`), and "OR" (`||`).
+with booleans: "NOT" (`!`), "AND" (`&&`), and "OR" (`||`). 
+
+These logical operators work very much like English.
+* `A AND B` is only `true` if A **AND** B is `true`
+* `A OR B` is `true` if either A **OR** B is `true`
+* If `A` is `false`, then `NOT A` is `true`. Because `true` is the only other value that is **NOT** `false`.
+
+![](images/truth_table.png)
 
 ```js
 /* NOT */
@@ -218,6 +238,12 @@ with booleans: "NOT" (`!`), "AND" (`&&`), and "OR" (`||`).
 > false || false
 < false
 ```
+
+What does: 
+```js
+(!true && false) || ((!false || !true) && true);
+``` 
+evaluate to?
 
 #### Strings
 
@@ -549,36 +575,6 @@ loveAnime("Your Lie in April");
 If I decided I wanted it to say "I genuinely adore ..." instead, I would only
 need to edit a single line in the function!
 
-#### Example: `animePlanner`
-
-Let's write a function called `animePlanner` that has two arguments:
-- `totalHours`: how many hours I can spend on watching anime today
-- `currentMinutes`: the number of minutes I've already watched anime today
-
-The function should print out how many episodes of anime I can still watch today. 
-(Fractions of episodes is fine too). Each episode of anime is 20 minutes.
-
-```js
-const animePlanner = (totalHours, currentMinutes) => {
-  const totalMinutes = totalHours * 60;                   // how many minutes do I have have total in a day
-  const remainingMinutes = totalMinutes - currentMinutes; // how much time (in minutes) do I have left
-  const canWatch = remainingMinutes / 20;                 // how many episodes I can watch
-  console.log("You can watch " + canWatch + " more episodes.");
-};
-```
-
-Note: 
-- In our `console.log`, we added a number to strings! This works because JavaScript
-  converts the number to a string and the joins the strings together.
-- We can create variables inside of our functions! This can make it easier to
-  read and understand what our function does. Try to give your variables and
-  functions informative names to make them easier to understand.
-
-Let's try calling our function:
-
-```js
-animePlanner(2, 30);
-```
 #### **Extra:** callbacks
 
 Fun fact: you can actually pass a function as an argument into another function:
@@ -680,6 +676,37 @@ What will get printed when the code in each question is run?
 
 </details>
 
+#### Problem: `animePlanner`
+
+Let's write a function called `animePlanner` that has two arguments:
+- `totalHours`: how many hours I can spend on watching anime today
+- `currentMinutes`: the number of minutes I've already watched anime today
+
+The function should print out how many episodes of anime I can still watch today. 
+(Fractions of episodes is fine too). Each episode of anime is 20 minutes.
+
+```js
+const animePlanner = (totalHours, currentMinutes) => {
+  const totalMinutes = totalHours * 60;                   // how many minutes do I have have total in a day
+  const remainingMinutes = totalMinutes - currentMinutes; // how much time (in minutes) do I have left
+  const canWatch = remainingMinutes / 20;                 // how many episodes I can watch
+  console.log("You can watch " + canWatch + " more episodes.");
+};
+```
+
+Note: 
+- In our `console.log`, we added a number to strings! This works because JavaScript
+  converts the number to a string and the joins the strings together.
+- We can create variables inside of our functions! This can make it easier to
+  read and understand what our function does. Try to give your variables and
+  functions informative names to make them easier to understand.
+
+Let's try calling our function:
+
+```js
+animePlanner(2, 30);
+```
+
 ### Conditionals
 
 In programming, conditionals are a tool used to define branching paths in the code. The path taken depends on the result of some condition.
@@ -750,16 +777,15 @@ What is the output of the following pieces of code?
    }
    ```
 1. ```js
-   const testScore = 50;
+   let testScore = 50;
    if (testScore > 60) {
      console.log("You passed!");
-   } 
-   else {
+   } else {
      console.log("You failed :(");
    }
    ```
 1. ```js
-   const testScore = 95;
+   let testScore = 95;
    if (testScore >= 90) {
      console.log("You got an A!");
    }
@@ -773,7 +799,7 @@ What is the output of the following pieces of code?
    }
 
    if (testScore >= 60) {
-     console.lof("You got a D");
+     console.log("You got a D");
    }
 
    if (testScore < 60) {
@@ -782,20 +808,16 @@ What is the output of the following pieces of code?
    ```
 
 1. ```js
-   const testScore = 80;
+   let testScore = 80;
    if (testScore >= 90) {
      console.log("You got an A!");
-   }
-   else if (testScore >= 80) {
+   } else if (testScore >= 80) {
      console.log("You got a B!");
-   }
-   else if (testScore >= 70) {
+   } else if (testScore >= 70) {
      console.log("You got a C");
-   }
-   else if (testScore >= 60) {
+   } else if (testScore >= 60) {
      console.lof("You got a D");
-   }
-   else {
+   } else {
      console.log("You failed :(");
    }
    ```
@@ -826,6 +848,7 @@ const applicant = {
 	gpa: 3.0,
 };
 ```
+First of all, we note that we can create an object by using these {} symbols. So whenever you see some code with this same form, you know it's an object.
 
 Let's break down the parts of this object so we can better understand how it works.
 
