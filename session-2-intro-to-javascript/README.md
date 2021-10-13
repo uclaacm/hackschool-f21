@@ -49,6 +49,7 @@
       - [The `if-else` statement](#the-if-else-statement)
       - [The `if-elseif-else` ladder](#the-if-elseif-else-ladder)
       - [Practice](#practice-3)
+      - [Problem: `checkMasks`](#problem-checkmasks)
     - [Objects](#objects)
       - [Object Properties](#object-properties)
       - [Object Values](#object-values)
@@ -56,6 +57,7 @@
       - [Modifying/Deleting Object Properties](#modifyingdeleting-object-properties)
       - [Object Methods](#object-methods)
       - [Practice](#practice-4)
+      - [Problem: `playerComparison`](#problem-playercomparison)
     - [Arrays](#arrays)
       - [What is an Array?](#what-is-an-array)
       - [Accessing Array Elements](#accessing-array-elements)
@@ -685,6 +687,9 @@ Let's write a function called `animePlanner` that has two arguments:
 The function should print out how many episodes of anime I can still watch today. 
 (Fractions of episodes is fine too). Each episode of anime is 20 minutes.
 
+<details>
+<summary>Solutions:</summary>
+
 ```js
 const animePlanner = (totalHours, currentMinutes) => {
   const totalMinutes = totalHours * 60;                   // how many minutes do I have have total in a day
@@ -693,6 +698,7 @@ const animePlanner = (totalHours, currentMinutes) => {
   console.log("You can watch " + canWatch + " more episodes.");
 };
 ```
+</details>
 
 Note: 
 - In our `console.log`, we added a number to strings! This works because JavaScript
@@ -834,6 +840,39 @@ What is the output of the following pieces of code?
     "You got a D"
     ```
 4. `"You got a B!"`
+
+</details>
+
+#### Problem: `checkMasks`
+You work for the new gym at UCLA Bruin Gym (bgym for short). 
+You are in charge of walking around the gym periodically and
+checking to see if students are wearing their masks properly in the gym. 
+At any time, if you observe that less than 80% of people are not wearing their masks, 
+you are required to do an announcement on the PA system.
+
+For this exercise, write a function called `checkMasks` that takes in three arguments:
+1. `totalPeople`: How many people are in the gym currently
+2. `maskCount`: How many people are currently wearing masks
+3. `announcment`: Some message string telling people to wear their masks
+
+If there are more than or equal to 80% of people wearing masks, you function should print nothing and return `false`.
+If there are less than 80% of people wearing masks, your function should print the `announcment` string, and then return true. 
+
+<details>
+  <summary>Solutions: </summary>
+ 
+```js
+const checkMasks = (totalPeople, maskCount, announcment) => {
+    if (maskCount / totalPeople >= 0.8) {
+        return false;
+    } else {
+        console.log(announcment);
+        return true;
+    }
+};
+
+checkMasks(60, 53, "All Bruins, please mask up 1head.");
+```
 
 </details>
 
@@ -1005,6 +1044,62 @@ In all of the below questions, use the following object to determine the output:
 
 </details>
 
+#### Problem: `playerComparison`
+In a multiplayer video game, each player has an object like so:
+```js
+const playerTenz = {
+    username: "TenZ",
+    health: 100,
+    armor: 50
+}
+
+const playerEugene = {
+    username: "euglo", // what a scrub
+    health: 2,
+    armor: 0
+}
+```
+
+At any point in time, our game wants to know who currently has the highest health and armor combined.
+(Health + Armor) is a directly proportional to skill. Eg. since euglo has a combined health+armor of 2, he sucks lul.
+As part of this, we want to write a function `playerComparison`, that takes in two arguments: 
+
+1. `player1`: a player object
+2. `player2`: another player object
+
+The function will return the username of whoever has the most health and armor combined. 
+In the event that the health and armor combined are the same, we want to return the string `"Equal"`.
+
+<details>
+  <summary>Solutions:</summary>
+
+  ```js
+  const playerComparison = (player1, player2) => {
+      if (player1.health + player1.armor > player2.health + player2.armor) {
+          return player1.username;
+      } else if (player1.health + player1.armor < player2.health + player2.armor) {
+          return player2.username;
+      } else {
+          return "Equal";
+      }
+  };
+
+  const playerTenz = {
+      username: "TenZ",
+      health: 100,
+      armor: 50
+  }
+
+  const playerEugene = {
+      username: "euglo", // what a scrub
+      health: 2,
+      armor: 0
+  }
+
+  playerComparison(player1, player2);
+  ```
+</details>
+
 ### Arrays
 So now with objects we have a way to group related data together in a meaningful way (using key-value pairs). But this does not always make sense to do. For example if we ran a restuarant and collected rating scores out of 5 stars, it wouldn't make as much sense to assign some label/key to each rating. That would look something like:
 ```js
@@ -1134,4 +1229,45 @@ What is the output of the following code?
      "what is up?"
      ```
 
+</details>
+
+#### Problem: `calculateAverage`
+You are the new CS professor at UCLA.
+Even though you get paid very little to teach your students (because the CS department is sh** and doesn't do anything right),
+you still want to do a good job of teaching.
+You devise a method of rewarding your students:
+If the average of all their midterm test scores is larger than 75, then you will reward your students. 
+Else, you will dish out more homework.
+
+Write a function, `calculateAverage`, that takes in an array of numbers (`scores`), and returns the average of all the numbers.
+
+<details>
+  <summary>Solutions: </summary>
+  
+  ```js
+  // method 1
+  const calculateAverage = (scores) => {
+      let total = 0;
+      for (const score of scores) {
+          total = total + score;
+      }
+      return (total/scores.length);
+  };
+
+  // method 2: This is method does the exact same thing
+  // but uses more complicated programming concepts.
+  // If you don't understand this don't worry because
+  // you won't need to! (unless you take CS 131)
+  const calculateAverage = (scores) => {
+      let total = scores.reduce((accumulator, current) => {
+          return accumulator + current;
+      }, 0);
+
+      return (total/scores.length);
+  };
+
+  const midterm1Results = [80, 70, 90, 100, 40, 74, 88];
+
+  calculateAverage(midterm1Results);
+  ```
 </details>

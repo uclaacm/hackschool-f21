@@ -5,6 +5,8 @@ What does this evaluate to:
 
 
 
+
+
 Types:
 What will get printed in each of these questions? (Try to figure it out without actually running the code.)
 
@@ -14,6 +16,7 @@ console.log("hello" !== "HELLO")
 console.log(5 === 8)
 console.log(!true)
 console.log((4 < 6) && (8 !== 10))
+
 
 
 
@@ -40,6 +43,11 @@ console.log("Today is " + today);
 let uclaScore = 100;
 let uscScore = 0;
 console.log(uclaScore > uscScore);
+
+
+
+
+
 
 
 
@@ -76,6 +84,14 @@ no("jam", "bred");
 
 
 
+
+
+
+
+
+
+
+
 Functions 2:
 Let's write a function called animePlanner that has two arguments:
 
@@ -84,6 +100,13 @@ Let's write a function called animePlanner that has two arguments:
 
 The function should print out how many episodes of anime I can still watch today. (Fractions of episodes is fine too). 
 Each episode of anime is 20 minutes.
+
+
+
+
+
+
+
 
 Conditionals 1:
 You work for the new gym at UCLA Bruin Gym (bgym for short). 
@@ -100,6 +123,7 @@ A function called checkMasks that takes in three arguments:
 
 If there are more than or equal to 80% of people wearing masks, you function should print nothing and return false.
 If there are less than 80% of people wearing masks, your function should print the announcment string, and then return true. 
+
 
 
 
