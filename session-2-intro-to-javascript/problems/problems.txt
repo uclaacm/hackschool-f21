@@ -190,6 +190,10 @@ let id2 = {
     DOB: new Date(1990, 11, 17)
 }
 
+For this problem, you will want to take a look 
+at the [MDN Documentation for a Date Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). 
+Have fun!
+
 
 
 
@@ -200,11 +204,12 @@ let id2 = {
 
 
 Arrays 1
-You are the new CS professor at UCLA.
-Even though you get paid very little to teach your students (because the CS department is sh** and doesn't do anything right),
+You are the new CS professor at UCLA. 
+Although you don't have as much teaching experiences compared to the likes of Smallberg, Nachenberg, or Eggert,
 you still want to do a good job of teaching.
-You devise a method of rewarding your students:
-If the average of all their midterm test scores is larger than 75, then you will reward your students. 
+Hence, you devise a new method of rewarding your students:
+If the average of all their midterm test scores is larger than 75, 
+then you will give them all A's.
 Else, you will dish out more homework.
 
 Write a function, calculateAverage, that takes in an array of numbers (scores), and returns the average of all the numbers.

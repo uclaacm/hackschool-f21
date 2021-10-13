@@ -58,6 +58,7 @@
       - [Object Methods](#object-methods)
       - [Practice](#practice-4)
       - [Problem: `playerComparison`](#problem-playercomparison)
+      - [Extra Problem: `isLegal`](#extra-problem-islegal)
     - [Arrays](#arrays)
       - [What is an Array?](#what-is-an-array)
       - [Accessing Array Elements](#accessing-array-elements)
@@ -871,7 +872,7 @@ const checkMasks = (totalPeople, maskCount, announcment) => {
     }
 };
 
-checkMasks(60, 53, "All Bruins, please mask up 1head.");
+checkMasks(60, 53, "All Bruins, please mask up :).");
 ```
 
 </details>
@@ -1100,8 +1101,73 @@ In the event that the health and armor combined are the same, we want to return 
   ```
 </details>
 
+#### Extra Problem: `isLegal`
+
+You are working at a Ralph's in Westwood. At 1am, some sus UCLA students pull up wanting to buy some alchohol. 
+You are not sure if they are legal
+or not. 
+You ask the students for their ID to check their age, 
+but it turns out that these students are CS nerdz - they have their ID in digital format.
+Worst of all, this ID is stored as a JavaScript Object (yuck~). 
+
+But oh well, you gotta get your job done. 
+So you will need to write a JavaScript function, `isLegal`, that takes in an `id` as an argument, and returns true if that student is over 21, 
+or false if that student is below 21.
+
+Examples of student IDs:
+
+```js
+let id1 = {
+    name: "Eugene Lo",
+    DOB: new Date(1990, 11, 17)
+}
+
+let id2 = {
+    name: "Asha Kar",
+    DOB: new Date(1990, 11, 17)
+}
+```
+
+For this problem, you will want to take a look at the [MDN Documentation for a Date Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). Have fun!
+
+<details>
+<summary>Solution:</summary>
+
+```js
+const isLegal = (id) => {
+    const currentTime = new Date(); // gets the current time
+    const birthDate = id.DOB.getDate();
+    const birthMonth = id.DOB.getMonth();
+    const birthYear = id.DOB.getFullYear();
+    const currentDate = currentTime.getDate();
+    const currentMonth = currentTime.getMonth();
+    const currentYear = currentTime.getFullYear();
+
+    if (birthYear + 21 < currentYear) {
+        return true;
+    } else if (birthYear + 21 === currentYear) {
+        if (currentMonth > birthMonth) {
+            return true;
+        } else if (currentMonth === birthMonth) {
+            return birthDate <= currentDate;
+        } else {
+            return false;
+        }
+    }
+    return false;
+};
+
+let id1 = {
+    name: "Eugene Lo",
+    DOB: new Date(2000, 9, 11)
+}
+
+isLegal(id1);
+```
+</details>
+
 ### Arrays
-So now with objects we have a way to group related data together in a meaningful way (using key-value pairs). But this does not always make sense to do. For example if we ran a restuarant and collected rating scores out of 5 stars, it wouldn't make as much sense to assign some label/key to each rating. That would look something like:
+So now with objects we have a way to group related data together in a meaningful way (using key-value pairs). But this does not always make sense to do. For example if we ran a restaurant and collected rating scores out of 5 stars, it wouldn't make as much sense to assign some label/key to each rating. That would look something like:
 ```js
 const ratings = {
 	rating1: 3,
@@ -1232,11 +1298,10 @@ What is the output of the following code?
 </details>
 
 #### Problem: `calculateAverage`
-You are the new CS professor at UCLA.
-Even though you get paid very little to teach your students (because the CS department is sh** and doesn't do anything right),
+You are the new CS professor at UCLA. Although you don't have as much teaching experiences compared to the likes of Smallberg, Nachenberg, or Eggert,
 you still want to do a good job of teaching.
-You devise a method of rewarding your students:
-If the average of all their midterm test scores is larger than 75, then you will reward your students. 
+Hence, you devise a new method of rewarding your students:
+If the average of all their midterm test scores is larger than 75, then you will give them all A's.
 Else, you will dish out more homework.
 
 Write a function, `calculateAverage`, that takes in an array of numbers (`scores`), and returns the average of all the numbers.

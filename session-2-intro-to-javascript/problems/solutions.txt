@@ -41,7 +41,7 @@ const checkMasks = (totalPeople, maskCount, announcment) => {
     }
 };
 
-checkMasks(60, 53, "All Bruins, please mask up 1head.");
+checkMasks(60, 53, "All Bruins, please mask up :).");
 
 Objects 1
 const playerComparison = (player1, player2) => {
@@ -69,7 +69,6 @@ const playerEugene = {
 playerComparison(player1, player2);
 
 Objects 2
-// method 1
 const isLegal = (id) => {
     const currentTime = new Date(); // gets the current time
     const birthDate = id.DOB.getDate();
@@ -79,7 +78,6 @@ const isLegal = (id) => {
     const currentMonth = currentTime.getMonth();
     const currentYear = currentTime.getFullYear();
 
-    const monthsAlive = (currentYear - birthYear)*12 + (currentMonth - birthMonth); 
     if (birthYear + 21 < currentYear) {
         return true;
     } else if (birthYear + 21 === currentYear) {
