@@ -11,8 +11,8 @@
 <!-- omit in toc -->
 ## Resources
 
-- [Slides]()
-- [ACM Membership Attendance Portal]()
+- [Slides](https://docs.google.com/presentation/d/1b9-ydhwoD-22aNzxt6CaCn72tMC0JZQLP6WK-lNftMU/edit?usp=sharing)
+- [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 <!-- omit in toc -->
 ## What we'll be learning today
