@@ -8,14 +8,15 @@ What does this evaluate to:
 
 
 Types:
-What will get printed in each of these questions? (Try to figure it out without actually running the code.)
+What will get printed in each of these questions? 
+(Try to figure it out without actually running the code.)
 
-console.log(1 + 11)
-console.log("1" + "11")
-console.log("hello" !== "HELLO")
-console.log(5 === 8)
-console.log(!true)
-console.log((4 < 6) && (8 !== 10))
+console.log(1 + 11);
+console.log("1" + "11");
+console.log("hello" !== "HELLO");
+console.log(5 === 8);
+console.log(!true);
+console.log((4 < 6) && (8 !== 10));
 
 
 
@@ -67,9 +68,13 @@ const yop = (y, o, p) => {
   return yep(y) + oh(o) + pop(p);
 };
 
-
-
 console.log(yop(5, 2, 3));
+
+
+
+
+
+
 const nah = (s) => {
   console.log(s + s);
 };

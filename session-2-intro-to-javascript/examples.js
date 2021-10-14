@@ -1,55 +1,109 @@
-// This is a single line comment
+// this is a comment
 
-console.log("1" + "11")
-console.log(1 + 11)
-console.log((4 < 6) && (8 !== 10))
+/*
+this is
+a 
+multiline
+comment
+*/
+
+(true && false) || ((!false || true) && true);
+
+false || (true && true)
+false || true
+true
 
 
+const helloName = (name) => {
+    console.log("Hello, " + name);
+};
 
-const helloWorld = () => {
-    console.log("Hello, World");
+const triple = (x) => {
+    x * 3;
+};
+
+const tripleWithReturn = (x) => {
+    return x * 3;
 };
 
 
-const animePlaner = (totalHours, currentMinutes) => {
+const animePlanner = (totalHours, currentMinutes) => {
     const totalMinutes = totalHours * 60;
     const remainingMinutes = totalMinutes - currentMinutes;
-    const remainingEpisodes = remainingMinutes / 20;
-    return remainingEpisodes;
+    const canWatch = remainingMinutes / 20;
+    console.log("You can watch " + canWatch + " episodes!");
+};
+
+let testScore = 50;
+if (testScore > 60) {
+    console.log("You passed!");
+} else {
+    console.log("You failed :(");
 }
-
-
-const sayHello = () => {
-    console.log("Hello");
-};
-
-const introduce = (ifGreet, greet) => {
-    if (ifGreet) {
-        greet();    
-    }
-    console.log("My name is Alex");
-};
-
-introduce(true, sayHello);
 
 
 if (testScore >= 90) {
     console.log("You got an A");
-}
-else if (testScore >= 80) {
+} else if (testScore >= 80) {
     console.log("You got a B");
-}
-else if (testScore >= 70) {
+} else if (testScore >= 70) {
     console.log("You got a C");
-} 
-else {
+} else {
     console.log("You failed");
 }
 
-const student = {
-    name: "Joe Bruin",
-    email: "joebruin@ucla.edu",
-    UID: 123456789,
-    isTrueBruin: true,
-    favDiningHall: "Bplate"
+if (testScore >= 90) {
+    console.log("You got an A");
+} if (testScore >= 80) {
+    console.log("You got a B");
+} if (testScore >= 70) {
+    console.log("You got a C");
+} else {
+    console.log("You failed");
 }
+
+
+const checkMasks = (totalPeople, maskCount, announcment) => {
+    if (maskCount / totalPeople >= 0.8) {
+        return false;
+    } else {
+        console.log(announcment);
+        return true;
+    }
+};
+
+
+
+const applicant = {
+    name: "Alex",
+    email: "abc@gmail.com",
+    gpa: 3.0
+}
+
+
+
+const playerTenz = {
+    username: "TenZ",
+    health: 100,
+    armor: 50
+}
+
+const playerEugene = {
+    username: "euglo", // what a scrub
+    health: 2,
+    armor: 0
+}
+
+const playerComparison = (player1, player2) => {
+    const player1HealthArmor = player1.health + player1.armor;
+
+    const player2HealthArmor = player2["health"] + player2["armor"];
+
+    if (player1HealthArmor > player2HealthArmor) {
+        return player1.username;
+    } else if (player1HealthArmor < player2HealthArmor) {
+        return player2.username;
+    } else {
+        return "Equal";
+    }
+};
