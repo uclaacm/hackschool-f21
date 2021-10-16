@@ -1,0 +1,19 @@
+.post {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid lightgray;
+    width: 500px;
+}
+
+.reaction-bar img {
+    height: 50px;
+    margin-top: 20px;
+}
+
+.reaction {
+    margin-left: 85px;
+}
+
+.image {
+    width: 100%;
+}
