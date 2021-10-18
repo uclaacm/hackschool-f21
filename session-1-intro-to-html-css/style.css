@@ -1,28 +1,14 @@
-/* To the reader, these are comments in CSS! */
-
-/* 
-First example
-- Adding the .css file to the .html file
-- Rules with HTML tags
-*/
-
 p {
     font-size: 24px;
 }
 
 li {
-    font-size: larger;
+    font-size: large;
 }
 
 h2 {
     text-decoration: underline;
 }
-
-
-/* 
-Second example
-- Classes and IDs
-*/
 
 .basses {
     width: 200px;
@@ -37,20 +23,10 @@ Second example
     text-align: center;
 }
 
-
-/* 
-Third example
-- Cascading
-- Specificity
-- Combining Selectors
-*/
-
-/* Cascading */
 p {
     font-size: 30px;
 }
 
-/* Specificity */
 h1 {
     color: red;
 }
