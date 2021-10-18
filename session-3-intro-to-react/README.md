@@ -34,8 +34,8 @@ export default Post;
 What's shown here from the top:
 1. React is imported so we can use parts of it in our file.
 2. A function is defined where
-  1. The name matches the name of the file
-  2. A single JSX element is returned from the function
+    1. The name matches the name of the file
+    2. A single JSX element is returned from the function
 3. The component is exported so we can later import it into another file
 
 ### How do we use the component?
