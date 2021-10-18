@@ -32,7 +32,7 @@ us if you have any questions or comments.
 * Week 5: Props and Layout
 * Week 6: State
 * Week 7: Asynchronous + Web APIs
-* Week 9: Lifecycle
+* Week 8: Lifecycle
 
 ## Essential Links 
 
