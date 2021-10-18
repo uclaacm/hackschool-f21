@@ -1,38 +1,37 @@
 import React from 'react'
-import image from '../images/bts.jpg'
+import ticketsImage from '../images/bts.jpg'
 import comment from '../images/comment.png'
 import retweet from '../images/retweet.png'
 import like from '../images/heart.png'
 import './Post.css'
 
-function Post() {
+function Post(){
     return <div className="post">
         <p><strong>Eric</strong> @ericyangg</p>
-        <p>i got bts tickets!!</p>
+        <p>i got bts tickets!!!</p>
         <img
-            className='image' 
-            src={image}
+            className='image'
+            src={ticketsImage}
             alt='bts tickets'
         />
-        <div className="reaction-bar">
-            <img 
+        <div className='reaction-bar'>
+            <img
                 className='reaction'
-                src={comment} 
-                alt="comment"
+                src={comment}
+                alt='comment'
             />
-            <img 
+            <img
                 className='reaction'
-                src={retweet} 
-                alt="comment"
+                src={retweet}
+                alt='retweet'
             />
-            <img 
+            <img
                 className='reaction'
-                src={like} 
-                alt="like"
+                src={like}
+                alt='like'
             />
         </div>
     </div>
-    
 }
 
 export default Post;
