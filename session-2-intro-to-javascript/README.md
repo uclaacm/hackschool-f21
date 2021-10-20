@@ -13,6 +13,7 @@
 
 - [Slides](https://docs.google.com/presentation/d/1b9-ydhwoD-22aNzxt6CaCn72tMC0JZQLP6WK-lNftMU/edit?usp=sharing)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
+- [Workshop Recording](https://youtu.be/v30BzE09geE)
 
 <!-- omit in toc -->
 ## What we'll be learning today
