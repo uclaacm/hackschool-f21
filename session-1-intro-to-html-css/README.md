@@ -11,6 +11,7 @@
 - [Slides](https://docs.google.com/presentation/d/10WVk3ZjcXkYrOL-PSdeAYcVhKK7VcZScHgwuxXsqTMM/edit?usp=sharing)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 - [W3Schools (Quick reference to HTML and CSS properties)](https://www.w3schools.com/html/default.asp)
+- [Workshop Recording](https://youtu.be/F2VlOVAbBuA)
 
 ## What we'll be learning today
 - [HTML](#html)
