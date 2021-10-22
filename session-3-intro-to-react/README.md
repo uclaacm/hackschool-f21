@@ -10,6 +10,7 @@
 
 - [Slides](https://docs.google.com/presentation/d/1HBMlVmoG8n3r0LJ3KwD9QJYiteT4U2pdHxQ32yRy1Qc/edit?usp=sharing)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
+- [Recording](https://www.youtube.com/watch?v=WGs1Ao5WM8k)
 
 ## What we'll be learning today
 - [What is React?](#what-is-react?)
