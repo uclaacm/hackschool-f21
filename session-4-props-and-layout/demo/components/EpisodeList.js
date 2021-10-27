@@ -27,32 +27,50 @@ function Episode(props) {
 }
 
 function EpisodeList() {
+    const fillerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+    const episodes = 
+    [
+        {
+            episodeNum: 1,
+            title: "Red light, Green light",
+            img: SquidGame1,
+            description: fillerText
+        },
+        {
+            episodeNum: 2,
+            title: "Hell",
+            img: SquidGame2,
+            description: fillerText
+        },
+        {
+            episodeNum: 3,
+            title: "The Man with the Umbrella",
+            img: SquidGame3,
+            description: fillerText
+        },
+        {
+            episodeNum: 4,
+            title: "Stick to the Team",
+            img: SquidGame4,
+            description: fillerText
+        }
+    ];
+
+    const EpisodeArray = episodes.map((e) => { // e is every element in the episodes array
+        return (
+            <Episode 
+                episodeNum={e.episodeNum}
+                title={e.title}
+                img={e.img}
+                description={e.description}
+                key={e.episodeNum}
+            />
+        );
+    });
     return (
         <div>
-            <Episode 
-                episodeNum="1"
-                title="Red light, Green light"
-                img={SquidGame1}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            />
-            <Episode 
-                episodeNum="2"
-                title="Hell"
-                img={SquidGame2}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            />
-            <Episode 
-                episodeNum="3"
-                title="The Man with the Umbrella"
-                img={SquidGame3}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            />
-            <Episode 
-                episodeNum="4"
-                title="Stick to the Team"
-                img={SquidGame4}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            />
+            {EpisodeArray}
         </div>
     );
 }
