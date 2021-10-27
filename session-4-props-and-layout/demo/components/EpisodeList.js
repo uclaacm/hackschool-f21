@@ -5,14 +5,18 @@ import SquidGame2 from '../images/squid-game-2.jpg';
 import SquidGame3 from '../images/squid-game-3.jpg';
 import SquidGame4 from '../images/squid-game-4.jpg';
 
+import './Episode.css';
+
 function Episode(props) {
     return (
-        <div>
-            <div><h3>{props.episodeNum}</h3></div>
+        <div className='episode-container'>
+            <div className='episode-number'>
+                <h3>{props.episodeNum}</h3>
+            </div>
             <div>
                 <img src={props.img} width='100px' />
             </div>
-            <div>
+            <div className='episode-information'>
                 <h3>{props.title}</h3>
                 <p>
                     {props.description}

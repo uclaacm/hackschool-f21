@@ -1,0 +1,42 @@
+.episode-container {
+  /* FLEXBOX */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.episode-information {
+  /* FLEXBOX*/
+  display: flex;
+  flex-direction: column;
+
+  /* other styling */
+  width: 70%;
+  text-align: left;
+  padding: 8px;
+}
+
+
+/* other styling */
+.episode-number {
+  padding: 8px;
+}
+
+body {
+  background-color:rgb(14, 14, 14);
+  color: white;
+}
+
+h3 {
+  margin: 4px 0px;
+}
+
+img {
+  padding: 8px;
+}
+
+p {
+  margin: 4px 0px;
+}
+
