@@ -284,6 +284,438 @@ more maintainable.
 
 ## Props
 
+### Recap of last session
+
+So last session, we learnt how to create a react app and how to make our own components. For example, a `Post` component could be defined something like this.
+
+```js
+function Post() {
+    return <h1>nareh> is cool</h1>;
+}
+```
+
+In React terminology, we call this a **functional component**. If you recall, this:
+
+```html
+<h1>nareh> is cool</h1>
+```
+
+expression that we are returning is actually **JSX**. Although it's a fancy name, it's basically just HTML, but we're using it inside of a JavaScript file. The reason why we do that is because then we are able to incorporate programming elements into our HTML tags.
+
+### Demo
+
+This workshop, we're gonna recreate Netflix's episode lists.
+![](./images/netflix.PNG)
+ 
+
+### 🚩 Checkpoint : Game 1
+
+If we want to recreate Netflix's episode list, we need to start from scratch by creating a completely new React project! In this game, you have some tasks to do:
+- Create a new folder in an easily accesible accessible location like your Desktop and name the folder something like `hackschool-s4`. 
+- Then you want to open VSCode in that new folder that you just created. 
+- Open the terminal (it's on the top bar of VSCode if you can't find it). For Window's it's ``Ctrl + ` ``
+- Run the command `npx create-react-app netflix-clone` similar to how you did last week
+- If the command finished and succeeded, then you should be able to type `npm start` to see the default React app. 
+
+### Breaking down the Netflix Episode List
+
+![](./images/episode_list.PNG)
+
+Let's look how we can recreate this episode list. From a glance, we see that we can split the episode list into each invidual "Episode" that look almost identical to each except that they have different content. 
+
+Hence, if we create a new `EpisodeList.js` component, it may look something like this.
+
+```js
+// In EpisodeList.js
+
+import React from 'react';
+
+function Episode() {
+    return (
+        <div></div>  // currently just returns an div/box
+    );
+}
+
+function EpisodeList() {
+     // In our episode list, return a bunch of episode components!
+    return (
+        <div>
+            <Episode /> 
+            <Episode />
+            <Episode />
+        </div>
+    );
+}
+
+export default EpisodeList;
+```
+
+This method of creating components shouldn't be unfamiliar to you from last week. Here, we created two components, one is the `Episode` component, which is empty for now. The second component that we created is `EpisodeList`, which simply returns/renders a bunch of `Episode` components. Finally, since we need our `App.js` to be able use our `EpisodeList`, we need to `export` it. 
+
+Then, our `App.js` will look something like this:
+
+```js
+import EpisodeList from './components/EpisodeList.js';
+
+function App() {
+  return (
+    <div className="App">
+      <EpisodeList />
+    </div>
+  );
+}
+```
+
+Wow! So empty! That's right, I got rid of almost all of the `App` component's original content because we don't need it anymore. What's important here is that we imported `EpisodeList` from wherever the `EpisodeList.js` file is, and then we used our component like so: `<Episode />`.
+
+Yay! While our website is still empty, we managed to set up a barebones `EpisodeList`. 
+
+### 🚩 Checkpoint : Game 2
+
+In this game:
+- Create a 'components' and 'images' folder 
+- In the 'components' folder, create a new file called `EpisodeList.js`
+- Set up a bare bones `EpisodeList.js` like I just showed
+- Modify `App.js` to display your bare bones `<EpisodeList />`!
+
+### Breaking down the Netflix Episode Component
+
+Now let's try breaking down each episode down. 
+
+![](./images/episode_div.PNG)
+
+From a very high level, we can break an "Episode" component into 3 big blocks, they seem to be boxes that contain various different content. Hence, it would be good to assume that they could be recreated with some sort of `<div>` tag.
+
+Now if we further dive into each box:
+
+![](./images/episode_tags.PNG)
+
+We see that we can further divide up the content inside of each `<div>` tag. Now that we are back to our familiar vanilla HTML tags like `<h3>, <img>` etc, this gives us a basis to start creating our Episode component!
+
+After some recreating the Episode component just like we broke it down, we see that our `Episode` component looks like this: 
+
+```js
+import squidGame1 from '../images/squid-game-1.jpg';
+
+function Episode() {
+    return (
+        <div>
+            <div><h3>1</h3></div>
+            <div>
+                <img src={squidGame1} width='100px' />
+            </div>
+            <div>
+                <h3>Red Light, Green light</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+    );
+}
+```
+
+Since you should already be familiar with this from Week 1 HTML, we won't dive into it too much. One thing of note is the way we imported the image and used it in the `<img>` tag. This is another example of JSX: We imported an image as a 'JavaScript' variable and then used it programmatically in our HTML.
+
+![](./images/demo-episode-component.PNG)
+
+Now, our website should look something like this. Not bad! At least for one episode, we got the content down, and it looks sort of similar to what Netflix does because we analyzed the possible tags that they could have used and then used it in our clone. 
+
+### 🚩 Checkpoint : Game 3
+
+In this game, your tasks are:
+
+- Make your own `<Episode />` component for any tv show that you like!
+- Feel free to copy as much of my code as you like!
+- Your end result should look somewhat like mine! 
+- Don't worry about styling and the positioning of the text and images!
+
+### What is Props?
+
+After coding our Episode List, we've realized a problem, and that is that making a new Episode becomes quite tedious. Currently, all of the `Episode`s in our `EpisodeList` look exactly same. 
+
+Let's say that you were working at Netflix; Squid Game comes out with a new episode, and you are in charge of updating the website to contain episode. How would you do it? Well, a naive approach would be to create an entirely new component <Episode2 /> component.
+
+```js
+function Episode1() { 
+  // same as our <Episode />
+}
+
+function Episode2() {
+  return (
+        <div>
+            <div><h3>2</h3></div>
+            <div>
+                <img src={squidGame2} width='100px' />
+            </div>
+            <div>
+                <h3>Hell</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+    );
+}
+
+function EpisodeList() {
+  return (
+        <div>
+            <Episode1 /> 
+            <Episode2 />
+        </div>
+    );
+}
+
+```
+
+However, as we can see, this naive approach is too tedious, it wastes lots of code and lots of time. Which means more work for you! If you don't want to get fired by Netflix, you better start using **Props**. But what is it?
+
+Props are how we can pass data from one component to another. This means that:
+
+- Instead of each component having hard-coded content
+- We give it to the component input
+- The component will use that input to generate a different result
+- This allows us to reuse A LOT of code
+
+Props are a core part of React Components, and are a key reason as to why they are so powerful. 
+
+#### An Analogy: Functions
+
+To better help us understand Props, let's take a look at JavaScript functions as an analogy. Take the following `sayHello` function. 
+
+```js
+function sayHello(name) {
+	console.log('Hello, ' + name.last + ' ' + name.first);
+}
+```
+
+This function simply takes in a `name` object and will print out `name.last` and `name.first`. 
+
+Thus, we would expect to use it like this:
+
+```js
+sayHello({first: 'Gi-hun', last: 'Seong'});  
+// Hello, Seong Gi-hun
+
+sayHello({ first: 'Sae-byeok', last: 'Kang'});  
+// Hello, Kang Sae-byeok
+```
+
+Notice that although we are calling the same function twice, because we passed in two different objects into the function, we get a different behaviour or output. 
+
+But wait. This sounds exactly like Props: by passing different data into the same component, the component is able to generate a different result. 
+
+Now if we try to remember, how did we teach you to create React components? That's right! React components are made by creating **FUNCTIONS**. We create a function whose name is the name of the component that we want to make, and then we export it. 
+
+> So the intuition is: If JavaScript functions can use **arguments** as a form of input to do different things, then why can't React components?
+
+So now the question is, we know how to pass arguments into functions, but how do we pass arguments into components?
+
+#### You've seen Props being used before
+The truth is, you've all already used Props before in our previous sessions, but we've never told you. 
+
+```js
+<img
+  src={squidGame1}
+  alt='Thumbnail of Episode 1'
+/>
+```
+
+Remember the `<img>` tag that we first introduced to you in session 1? Well, it seems that the `<img>` tag does exactly what we just described: Even though we are using the same `<img>` tag, if we pass in different images into the `src` property, then we get a different image displayed, similarly, if we pass in a different strings into the `alt` property, then we get a different alt text for that image.
+
+Again, we see the same idea: Although we are using the same tag/component/function, by passing in different data as input, we get a different result. 
+
+Well we didn't tell you, but `src` and `alt` are actually Props! So we've been using them the whole time!
+
+> `src` and `alt` are actually Props! 
+
+Now let's see how we can make our own components use Props too!
+
+### How to define Props
+
+Using Props in React is very similar as how we did it for the `<img>` tag. 
+
+```js
+// In EpisodeList
+
+<Episode
+  prop1="1"
+  prop2="Red light, Green light"
+/>
+```
+
+As seen, if we want to pass some data into a component, which in this case is the `<Episode />` component, then we just need to add `propName={The data that you want to pass in}` inside the tag of the component. Note that `propName` can be named anything, and the data that you want to pass in can be any JavaScript value or variable.
+
+Now, if we want our `<Episode />` component to use this data that we passed in, we need to do something special. 
+
+```js
+function Episode(props) {
+  return(
+    /* JSX code here */
+    <h3>{props.prop1}</h3>
+    <p>{props.prop2}</p>
+  );
+}
+```
+First, we add in a new argument into our function declaration: A `props` argument, which is just a JavaScript Object that contains all the props that was passed into to the component. In this case, since we passed in `prop1="1"` and `prop2="Red light, Green light"`, we can simply access the values using `props.prop1` and `props.prop2`. 
+
+### Applying this to our EpisodeList
+
+With all of this knowledge under our belts, we can now try to make our EpisodeList use Props too.
+
+First, things first, is to pass our data into each `<Episode />` component as props. So in our `EpisodeList` component:
+
+```js
+import squidGame1 from '../images/squid-game-1.jpg';
+import squidGame2 from '../images/squid-game-2.jpg';
+import squidGame3 from '../images/squid-game-3.jpg';
+import squidGame4 from '../images/squid-game-4.jpg';
+
+function EpisodeList() {
+  return (
+    <Episode 
+      episodeNum="1"
+      title="Red Light, Green Light"
+      thumbnail={squidGame1}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    />
+    <Episode 
+      episodeNum="2"
+      title="Hell"
+      thumbnail={squidGame2}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    />
+    <Episode 
+      episodeNum="3"
+      title="The Man with the Umbrella"
+      thumbnail={squidGame3}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    />
+    <Episode 
+      episodeNum="4"
+      title="Stick to the Team"
+      thumbnail={squidGame4}
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    />
+  );
+}
+```
+
+So what did we do? We passed in four props to each `<Episode />` component: `episodeNum`, `title`, `thumbnail`, and `description`. Each containing the data corresponding to each episode. Note that the four images are different images that I found on Google. 
+
+Now, all that's left is to change our `<Episode />` component to use these props instead of hard coded content. 
+
+```js
+function Episode(props) { // ✅
+    return (
+        <div className='episode-container'>
+            <div className='episode-number'>
+                <h3>{props.episodeNum}</h3> // ✅
+            </div>
+            <div>
+                <img src={props.thumbnail} width='100px' /> // ✅
+            </div>
+            <div className='episode-information'>
+                <h3>{props.title}</h3> ✅
+                <p>
+                    {props.description} // ✅
+                </p>
+            </div>
+        </div>
+    );
+}
+```
+
+There! All we did was add `props` as an argument to our function, and then we replaced all of our hardcoded content with `props.propName`. 
+
+Now, our website looks like this!
+
+![](./images/demo-with-props.PNG)
+
+### 🚩 Checkpoint : Game 4
+
+In this game, your tasks are:
+
+- Convert your `<Episode />` component to use Props!
+- Again, feel free to use as much of my code as you like
+- Well done! You have successfully incorporated Props in your website!
+
+### Using `Array.map()`
+
+
+Let's say that you call in sick one day at the office and your coworker steps in to help you. Suddenly, Squid Game comes out with a new episode and they need to update it on their website. However, that coworker has no idea how props work and all that: all they know is basic JavaScript! 
+
+To solve this problem, we can use `Array.map()` to further make our code much more simpler and easier to maintain and read. 
+
+In our `EpisodeList` component, we define an array of objects containing the data for all of the episodes for Squid Game. 
+
+```js
+const fillerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+const episodes = 
+[
+    {
+        episodeNum: 1,
+        title: "Red light, Green light",
+        thumbnail: squidGame1,
+        description: fillerText
+    },
+    {
+        episodeNum: 2,
+        title: "Hell",
+        thumbnail: squidGame2,
+        description: fillerText
+    },
+    {
+        episodeNum: 3,
+        title: "The Man with the Umbrella",
+        thumbnail: squidGame3,
+        description: fillerText
+    },
+    {
+        episodeNum: 4,
+        title: "Stick to the Team",
+        thumbnail: squidGame4,
+        description: fillerText
+    }
+];
+```
+
+Now, all we need to do, is map each item in this array, to an `<Episode />` component with props corresponding to each item in the array. The way we do this, is with some fancy JSX code with `Array.map()`:
+
+```js
+const allEpisodeComponents = episodes.map((e) => { 
+  // e is every element in the episodes array
+        return (
+            <Episode 
+                episodeNum={e.episodeNum}
+                title={e.title}
+                thumbnail={e.thumbnail}
+                description={e.description}
+                key={e.episodeNum}
+            />
+        );
+    });
+```
+
+Now, all we need to do, is `return` our new list of Episodes: `allEpisodeComponents` and then we are done!
+
+```js
+return (
+        <div>
+            {allEpisodeComponents}
+        </div>
+    );
+```
+
+Although our website still looks the same, it is much more simpler and easier to read. Your coworker can easily update this with just knowledge of JavaScript Arrays and Objects!
+
+### 🚩 Checkpoint : Game 5
+
+- Put all of the data for each `<Episode />` in an array.
+- Use the `array.map` function to create our `EpisodeList`.
+
 ## Layout
 
 Our Netflix episode list has all the content of the actual

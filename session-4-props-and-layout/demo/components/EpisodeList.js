@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SquidGame1 from '../images/squid-game-1.jpg';
-import SquidGame2 from '../images/squid-game-2.jpg';
-import SquidGame3 from '../images/squid-game-3.jpg';
-import SquidGame4 from '../images/squid-game-4.jpg';
+import squidGame1 from '../images/squid-game-1.jpg';
+import squidGame2 from '../images/squid-game-2.jpg';
+import squidGame3 from '../images/squid-game-3.jpg';
+import squidGame4 from '../images/squid-game-4.jpg';
 
 import './Episode.css';
 
@@ -14,7 +14,7 @@ function Episode(props) {
                 <h3>{props.episodeNum}</h3>
             </div>
             <div>
-                <img src={props.img} width='100px' />
+                <img src={props.thumbnail} width='100px' />
             </div>
             <div className='episode-information'>
                 <h3>{props.title}</h3>
@@ -34,35 +34,35 @@ function EpisodeList() {
         {
             episodeNum: 1,
             title: "Red light, Green light",
-            img: SquidGame1,
+            thumbnail: squidGame1,
             description: fillerText
         },
         {
             episodeNum: 2,
             title: "Hell",
-            img: SquidGame2,
+            thumbnail: squidGame2,
             description: fillerText
         },
         {
             episodeNum: 3,
             title: "The Man with the Umbrella",
-            img: SquidGame3,
+            thumbnail: squidGame3,
             description: fillerText
         },
         {
             episodeNum: 4,
             title: "Stick to the Team",
-            img: SquidGame4,
+            thumbnail: squidGame4,
             description: fillerText
         }
     ];
 
-    const EpisodeArray = episodes.map((e) => { // e is every element in the episodes array
+    const allEpisodeComponents = episodes.map((e) => { // e is every element in the episodes array
         return (
             <Episode 
                 episodeNum={e.episodeNum}
                 title={e.title}
-                img={e.img}
+                thumbnail={e.thumbnail}
                 description={e.description}
                 key={e.episodeNum}
             />
@@ -70,7 +70,7 @@ function EpisodeList() {
     });
     return (
         <div>
-            {EpisodeArray}
+            {allEpisodeComponents}
         </div>
     );
 }
