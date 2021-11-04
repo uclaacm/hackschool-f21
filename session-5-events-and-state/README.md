@@ -8,7 +8,7 @@
 
 ## Resources
 
--   [Slides](https://links.uclaacm.com/hackschool21-s5-slides)
+-   [Slides](http://links.uclaacm.com/hackschool21-s5-slides)
 -   [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 -   Recording (Coming Soon)
 
