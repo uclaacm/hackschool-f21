@@ -1,4 +1,4 @@
-# Hackschool Session 3: Introduction to React
+# Hackschool Session 4: Props and Layout
 
 **Date**: October 27, 2021
 
@@ -10,7 +10,7 @@
 
 - [Slides](https://docs.google.com/presentation/d/1cs4Ag73t4bCVXYthsXm1EifZQeJkE2H8T002myMCj9g/edit?usp=sharing)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
-- [(Coming Soon) Recording](#TODO)
+- [Workshop Recording](https://youtu.be/EzVHd2NtdrA)
 
 ## What we'll be learning today
 

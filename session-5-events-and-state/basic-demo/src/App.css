@@ -1,0 +1,14 @@
+.App {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.button {
+	border-radius: 20px;
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	padding: 10px 20px;
+}
