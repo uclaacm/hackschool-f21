@@ -8,7 +8,7 @@
 
 ## Resources
 
-- [Slides](https://docs.google.com/presentation/d/1DiJ4Zpc0lm3BG1aNATqC9zNDATfzk8h9CRJjf1bFZ18/edit#slide=id.ga38c9ed0bc_0_53)
+- [Slides](http://links.uclaacm.com/hackschool21-s6-slides)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today
@@ -41,25 +41,25 @@ Which line are you more likely to take? Obviously the empty one, right? On the l
 
 Now imagine instead of shoppers waiting in line, we have tasks in our program waiting to be executed. We want each task to get going as quickly as possible, and we don't want to keep them waiting.
 
-Async solves this problem! If there is ever some task that could take a long time, but you're not sure how long (say a network request) you don't want to freeze up your application while waiting for it to complete! Async allows us to execute more than one expression at a time, so we no longer have to wait for the intensive task to complete before moving onto other things. 
+Async solves this problem! If there is ever some task that could take a long time, but you're not sure how long (such as loading an image) you don't want to freeze up your application while waiting for it to complete! Async allows us to execute more than one expression at a time, so we no longer have to wait for the intensive task to complete before moving onto other things. 
 
 ## Promises
-Alright, so now that you know what asynchronous programming is, let's get into how you might actually use it in the context of a React Native app. 
+Alright, so now that you know what asynchronous programming is, let's get into how you might actually use it in the context of Javascript. 
 
 ### Motivation for Promises
 
-Let's say we have a function `simulateIntensiveTask()` that takes some amount of time to complete. When the task is completed, we should see a message in the console. The return value of the function is how long the task took to complete! Let's add the following to `handlePress()` to demonstrate a common problem:
+Let's say we have a function `simulateIntensiveTask()` that takes some amount of time to complete. When the task is completed, we should see a message in the console. The return value of the function is how long the task took to complete. Let's add the following to `handleClick()` to demonstrate a common problem:
 
 ```javascript
-const handlePress = () => {
+const handleClick = () => {
     simulateIntensiveTask();
 }
 ```
 
-When we click the button, our whole UI freezes up! If you look closely, you'll notice that React Native doesn't even realize we pressed the button until after the task is completed. This is terrible UX, and it's all happening because `simulateIntensiveTask()` is a synchronous function. As I explained before, in synchronous code each expression is executed one at a time so all expressions after our intensive task have to wait until they can get started! To emphasize that this is the case,
+When we click the button, we are unable to perform any other actions within the app! . This is terrible UX, and it's all happening because `simulateIntensiveTask()` is a synchronous function. As I explained before, in synchronous code each expression is executed one at a time so all expressions after our intensive task have to wait until they can get started! To emphasize that this is the case,
 
 ```javascript
-const handlePress = () => {
+const handleClick = () => {
         const seconds = simulateIntensiveTask();
         console.log("No more tasks left!");
         console.log("Total milliseconds: " + 1000 * seconds);
@@ -69,7 +69,7 @@ const handlePress = () => {
 As expected, the task takes a couple seconds to complete and the logs are only shown after the task is completed. Let's instead use an async function.
 
 ```javascript
-const handlePress = () => {
+const handleClick = () => {
     simulateIntensiveAsyncTask();
 }
 ```
@@ -77,7 +77,7 @@ const handlePress = () => {
 Now our app doesn't freeze while waiting for the task to get completed, awesome! Let's make absolutely sure that our function is asynchronous.
 
 ```javascript
-const handlePress = () => {
+const handleClick = () => {
         const seconds = simulateIntensiveAsyncTask();
         console.log("No more tasks left!");
         console.log("Total milliseconds: " + 1000 * seconds);
@@ -86,10 +86,10 @@ const handlePress = () => {
 
 But this results in something unexpected: why is the number of milliseconds NaN? And also, why is "The task took 3.32 seconds to complete. That was intense!" logged after the milliseconds log? Didn't we call `simulateIntensiveAsyncTask()` first? What is going on?
 
-Since `simulateIntensiveTask()` is asynchronous, which makes sense because our code is running out of order! The function doesn't freeze ours program and allows for all of the expressions that come after it to be executed before the task is completed. This leads to a problem, though: we don't yet know our seconds value when we log the number of milliseconds! To try to get to the bottom of this, let's take a couple steps back and just log our seconds value.
+Since `simulateIntensiveTask()` is asynchronous, our code is running out of order! The function doesn't freeze our program and allows for all of the expressions that come after it to be executed before the task is completed. This leads to a problem, though: we don't yet know our seconds value when we log the number of milliseconds! To try to get to the bottom of this, let's take a couple steps back and just log our seconds value.
 
 ```javascript
-const handlePress = () => {
+const handleClick = () => {
     const seconds = simulateIntensiveTask();
     console.log(seconds);
 }
@@ -116,7 +116,7 @@ That's great and all, but how can we actually get the value that we want (this i
 Going back to our `simulateIntensiveTask()` example, since (as I mentioned before) the function returns a promise we can use `.then()` as follows:
 
 ```javascript
-const handlePress = () => {
+const handleClick = () => {
     simulateIntensiveAsyncTask().then(seconds => {
         console.log(seconds);
     })
@@ -130,7 +130,7 @@ Alright, awesome! Now everything works as expected.
 `.then()` is great, but it can get out of hand *really* quickly if you have a couple nested asynchronous actions. Lets instead explore a way of resolving the promise that is a little easier on the eyes, the glorious async/await: 
 
 ```javascript
-const handlePress = async () => {
+const handleClick = async () => {
     const seconds = await simulateIntensiveAsyncTask();
     console.log(seconds);
 }
@@ -147,64 +147,43 @@ But first, let's do some review of an important Javascript concept: objects!
 
 ### Objects
 
-Say we want an object that represents a certain cryptocurrency. Each cryptocurrency has a name, a current price, and a percentage that represents the change in its price over the last 24 hours. To do so we could write the following: 
+Say we want an object that represents a joke. Each joke has a category, setup, and a delivery. To do so we could write the following: 
 
 ```javascript
-dogecoin = {
-    price: 0.0592,
-    change: 28.61,
+joke = {
+    category: "Pun",
+    setup: "Thank you student loans for getting me through college.",
+    delivery: "I don't think I'll ever be able to repay you."
 };
 ```
 
 To get each value within our object we can write the following:
 
 ```javascript
-const price = dogecoin.price; // equals .0592
-const change = dogecoin.change; //equals 28.61
+const category = joke.category; // equals "Pun"
+const setup = joke.setup; // equals "Thank you student loans for getting me through college.""
+const delivery = joke.delivery; // equals "I don't think I'll ever be able to repay you."
 ```
 
 OR
 
 
 ```javascript
-const price = dogecoin["price"]; //equals .0592
-const change = dogecoin["change"]; //equals 28.61
+const category = joke["category"]; // equals "Pun"
+const setup = joke["setup"]; // equals "Thank you student loans for getting me through college.""
+const delivery = joke["delivery"]; // equals "I don't think I'll ever be able to repay you."
 ```
 
-We can also have objects within objects!
-
-```javascript
-dogecoin = {
-    price: 0.0592,
-    tracker: {
-        day: 28.61,
-        week: 102.15,
-        month: 504.77,
-        year: 2009.38,
-    }
-};
-```
-
-And we can access values within that object in exactly the same way as shown above.
-
-```javascript
-const yearlyChange = dogecoin.tracker.year;
-```
+> Note: We can also have objects within objects! 
 
 ### Object Notation
 Very often, it's useful to store these objects as string representations. This string representation of a javascript object is known as JSON, or JavaScript Object Notation. Converting from a JSON value to an object is really easy! To demonstrate here's what our `dogecoin` object would look like as JSON.
 
 ```JSON
 {
-"dogecoin": {
-    "price": 0.0592,
-    "tracker": {
-        "day": 28.61,
-        "week": 102.15,
-        "month": 504.77,
-        "year": 2009.39,
-        }
-    }
+    "category": "Pun",
+    "setup": "Thank you student loans for getting me through college.",
+    "delivery": "I don't think I'll ever be able to repay you."
 }
 ```
 
@@ -215,7 +194,7 @@ Alright, now that we know what async programming is, how to use it in Javascript
 ## API's and fetch()
 An example of an intensive task in the real world would be a network request. A **network request** is a way to get data that isn't stored locally over the internet (i.e. from a server). Very often, we use something called an **API** to interface with these servers! API's are very powerful in that they let use access data in an easy way! Using an API, we don't have to worry about all the details of how that data was produced, all we need to worry about is how we want to use it.
 
-In order to trigger a network request in Javascript, we use the `fetch()` function. `fetch()` takes an API URL as a parameter and returns a promise (since we don't know how long it's going to take to get the data that we requested!). Since it returns a promise, we're going to have to resolve that promise in order to access the data we want! I'm going to use async/ await
+In order to trigger a network request in Javascript, we use the `fetch()` function. `fetch()` takes an API "endpoint" URL as a parameter and returns a promise (since we don't know how long it's going to take to get the data that we requested!). Since it returns a promise, we're going to have to resolve that promise in order to access the data we want! I'm going to use async/ await
 
 ```javascript
 // within an async function
@@ -233,52 +212,55 @@ const object = await result.json();
 Now, we can access our requested data. Let's show how you might do this in a real project.
 
 ### Demo
-Lately, the stock market and cryptos have been really popping off so I want to make an app that let's me keep track of my ~sound~ investments! Let's call it RobinPeople, *the people's dogecoin tracker.*
+I want to make an app that gives me a random joke when I click a button.
 
 I took the liberty of setting up some starter code so we can focus on just the async stuff. Feel free to download it and mess around!
 
-<img src="./img/robinpeople-starter.png" >
+Let's make it so that when we press the "Get Joke" button, the joke text is updated with some random joke! We can do this using the fetch function. In order to fetch the joke, we're going to use a free joke API.
 
-Let's make it so that when we press the update button, the price text is updated with the current price of dogecoin! We can do this using the fetch function. In order to get the current price, we're going to use an API from coingecko.com, a website that tracks cryptocurrency prices. 
-
-It can be accessed through the following link: [https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd&include_24hr_change=true]('https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd&include_24hr_change=true')
+It can be accessed through the following link (aka endpoint): [https://v2.jokeapi.dev/joke/Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit]('https://v2.jokeapi.dev/joke/Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit')
 
 If you open this URL in the browser, you will get something that looks like this:
 
 ```json
 {
-  "dogecoin": {
-    "usd": 0.052405,
-    "usd_24h_change": 62.493060243475654
-  }
+    "error": false,
+    "category": "Pun",
+    "type": "twopart",
+    "setup": "Why shouldn't you visit an expensive wig shop?",
+    "delivery": "It's too high a price \"toupee.\"",
+    "flags": {
+        "nsfw": false,
+        "religious": false,
+        "political": false,
+        "racist": false,
+        "sexist": false,
+        "explicit": false
+    },
+    "safe": true,
+    "id": 268,
+    "lang": "en"
 }
 ```
 
 ```javascript
-const dogeCoinApiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd&include_24hr_change=true';
+const endpoint = "https://v2.jokeapi.dev/joke/Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
 
-const RobinPeople = () => {
-    const [price, setPrice] = useState(0);
+function App() {
+  const [joke, setJoke] = useState("Generate a new joke!");
 
-    const updatePrice = () => {
-        const result = await fetch(dogeCoinApiUrl);
-        const json = await result.json();
-        setPrice(json.dogecoin.usd);
-    }
+  const getJoke = async () => {
+    const result = await fetch(endpoint);
+    const json = await result.json();
+    setJoke(`${json.setup}\n${json.delivery}`);
+  }
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>RobinPeople</Text>
-            <View style={styles.priceContainer}>
-                <Text>DOGE</Text>
-                <Text style={styles.price}>${price.toFixed(4)}</Text>
-                <MoneyButton 
-                    onPress= {updatePrice}
-                    title="Update"
-                />
-            </View>
-        </SafeAreaView>
-    );
+  return (
+    <div className="App">
+      <button onClick={getJoke}>Get Joke</button> <br/>
+      {joke}
+    </div>
+  );
 }
 ```
 
