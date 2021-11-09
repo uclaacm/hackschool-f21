@@ -10,7 +10,7 @@
 
 -   [Slides](http://links.uclaacm.com/hackschool21-s5-slides)
 -   [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
--   Recording (Coming Soon)
+-   [Workshop Recording](https://youtu.be/tFSpyeN2rvY)
 
 ## What We'll be Learning Today
 
