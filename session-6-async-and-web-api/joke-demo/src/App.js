@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
-import { simulateIntensiveTask, simulateIntensiveAsyncTask } from './obfuscatedFunctions';
+import React /*,{ useState }*/ from 'react';
+// import { simulateIntensiveTask, simulateIntensiveAsyncTask } from './obfuscatedFunctions';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     
   }
   const altClick = () => {
-    console.log("other button just registered")
+    console.log("yo");
   }
 
   return (

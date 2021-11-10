@@ -113,6 +113,8 @@ A promise is essentially just a wrapper for a value that might be unknown when t
 
 That's great and all, but how can we actually get the value that we want (this is called resolving the promise)? We have a couple ways we can approach it. One is to use `.then()` which can be called on a promise.
 
+> Note: Promises can be rejected.
+
 Going back to our `simulateIntensiveTask()` example, since (as I mentioned before) the function returns a promise we can use `.then()` as follows:
 
 ```javascript
@@ -177,7 +179,7 @@ const delivery = joke["delivery"]; // equals "I don't think I'll ever be able to
 > Note: We can also have objects within objects! 
 
 ### Object Notation
-Very often, it's useful to store these objects as string representations. This string representation of a javascript object is known as JSON, or JavaScript Object Notation. Converting from a JSON value to an object is really easy! To demonstrate here's what our `dogecoin` object would look like as JSON.
+Very often, it's useful to store these objects as string representations. This string representation of a javascript object is known as JSON, or JavaScript Object Notation. Converting from a JSON value to an object is really easy! To demonstrate here's what our `joke` object would look like as JSON.
 
 ```JSON
 {
@@ -192,9 +194,34 @@ Pretty similar, right? That's what makes JSON so convenient.
 Alright, now that we know what async programming is, how to use it in Javascript with Promises and async/await, and what JSON is, let's put it all together!
 
 ## API's and fetch()
-An example of an intensive task in the real world would be a network request. A **network request** is a way to get data that isn't stored locally over the internet (i.e. from a server). Very often, we use something called an **API** to interface with these servers! API's are very powerful in that they let use access data in an easy way! Using an API, we don't have to worry about all the details of how that data was produced, all we need to worry about is how we want to use it.
+An example of an intensive task in the real world would be a network request. A **network request** is a way to get data that isn't stored locally over the internet (i.e. from a server). Very often, we use something called a **Web API** to interface with these servers! Web API's are very powerful in that they let use access data in an easy way! Using a Web API, we don't have to worry about all the details of how that data was produced, all we need to worry about is how we want to use it. In order to trigger a network request in Javascript, we use the `fetch()` function.
 
-In order to trigger a network request in Javascript, we use the `fetch()` function. `fetch()` takes an API "endpoint" URL as a parameter and returns a promise (since we don't know how long it's going to take to get the data that we requested!). Since it returns a promise, we're going to have to resolve that promise in order to access the data we want! I'm going to use async/ await
+That was a lot. Let's break it all down.
+
+### Network Requests
+You've probably heard the term being thrown around, but what exactly is a network request? Essentially, it's just a request from an application on your device to get data from some far off computer (typically called a server). Let's take a look at network requests in action on YouTube!
+
+Alright, next up..
+
+### Web APIs
+Before we talk about what a Web API is, we should probably discuss APIs in general. Once again, you've probably heard this term thrown around but may not have truly understood what it means. An API (which stands for Application Programming Interface if you care) is simply a predefined way for developers to interact with code that someone else wrote. APIs are very useful because they allow us to use code without having to actually understand how they work. All the details are *abstracted* away.
+
+Think about how you interact with a car while driving: no matter what kind of car it is (assuming its meant for the same country) the controls function the same way. The steering wheel is always used to change direction, the shift stick is used to change gears, the dashboard shows essential information, etc. You don't have to actually know how the car works, you only have to know how to use the predefined interface (and then you'll be able to drive any car). This is exactly how APIs work!
+
+Okay, this is great... but what is a *Web* API? Along the same lines, a Web API also allows you to interact with someone else's code without having to know the details, but it differs in that it typically is accessed through a network request (through a URL).
+
+In order to "talk" with Web APIs, we use something called an HTTP request (essentially a network request that adheres to certain standards set by some nerds a long time ago). An HTTP request of a URL, the method (GET or POST or otherwise), and a header (meta information, such as content type JSON).
+
+Let's take a look at a couple Web API's!
+- https://any-api.com
+- https://public-apis.xyz
+- https://apilist.fun
+
+That was a lot, let's try to keep it simple today `:)`
+
+### `fetch` Function
+
+In order to trigger a network request in Javascript, we use the `fetch()` function. `fetch()` takes an API "endpoint" URL as a parameter and returns a promise (since we don't know how long it's going to take to get the data that we requested!). Since it returns a promise, we're going to have to resolve that promise in order to access the data we want! I'm going to use async/ await.
 
 ```javascript
 // within an async function
@@ -264,5 +291,10 @@ function App() {
 }
 ```
 
-Alright, this is working pretty nicely! 
+Alright, this is working pretty nicely! Now I'm going to pass it off to you.
+
+## Your turn
+Find an API you like (can be literally anything, check the links above if you need ideas), use fetch and your promise handling method of choice, and display the information from the JSON somewhere. Basically, implement what I just did in the demo except give it your own spin with your own API!
+
+
 
