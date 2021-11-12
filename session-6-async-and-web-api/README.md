@@ -10,6 +10,7 @@
 
 - [Slides](http://links.uclaacm.com/hackschool21-s6-slides)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
+- [Workshop Recording](https://youtu.be/QPn47-BHTW0)
 
 ## What we'll be learning today
 - [What is Asynchronous Programming?](#what-is-asynchronous-programming)
