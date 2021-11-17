@@ -243,18 +243,18 @@ import React, { useEffect, useState } from 'react';
 const catFactEndpoint = 'https://catfact.ninja/fact';
 
 function CatFact() {
- const [fact, setFact] = useState('Loading...');
- const getFact = async () => {...};
-
- useEffect(() => {
-   getFact();
- }, []);
-
- return (
-   <div classid='App'>
-     <button onClick={getFact}>Get new cat fact</button>
-     <div>{fact}</div>
-   </div>
+  const [fact, setFact] = useState('Loading...');
+  const getFact = async () => {...};
+ 
+  useEffect(() => {
+    getFact();
+  }, []);
+ 
+  return (
+    <div classid='App'>
+      <button onClick={getFact}>Get new cat fact</button>
+      <div>{fact}</div>
+    </div>
  );
 }
 
@@ -396,23 +396,23 @@ input! This is what a form looks like in React:
 
 ```js
 function Form() {
- const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState('');
 
- const handleSubmit = (e) => {
-   e.preventDefault();
-   // do something with userInput
- };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // do something with userInput
+  };
 
- return (
-   <form onSubmit={e => handleSubmit(e)}>
-     <input
-       type='text'
-       value={userInput}
-       onChange={e => setUserInput(e.target.value)}
-     />
-     <input type='submit' />
-   </form>
- );
+  return (
+    <form onSubmit={e => handleSubmit(e)}>
+      <input
+        type='text'
+        value={userInput}
+        onChange={e => setUserInput(e.target.value)}
+      />
+      <input type='submit' />
+    </form>
+  );
 }
 ```
 
