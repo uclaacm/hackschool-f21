@@ -290,11 +290,13 @@ many endpoints and tons of data.
 
 ![pokeapi screenshot](images/pokeapi.png)
 
-I'll use the [https://pokeapi.co/api/v2/pokemon/ditto] endpoint for now. First,
-I'll create a new file in my `components` folder called `PokemonInfo.js`. Then,
-I will add the following code to my file. As always, we're going to import
-React (and `useEffect` and `useState` while we're at it). We'll also define
-a new component and make sure to export it so we can render it in the `App`.
+I'll use the
+[https://pokeapi.co/api/v2/pokemon/ditto](https://pokeapi.co/api/v2/pokemon/ditto)
+endpoint for now. First, I'll create a new file in my `components` folder called
+`PokemonInfo.js`. Then, I will add the following code to my file. As always, we're
+going to import React (and `useEffect` and `useState` while we're at it). We'll
+also define a new component and make sure to export it so we can render it in the
+`App`.
 
 Like the `CatFacts` component, we'll also create a constant to store our
 API endpoint.
