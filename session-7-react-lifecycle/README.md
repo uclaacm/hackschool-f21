@@ -666,10 +666,10 @@ const [errorMsg, setErrorMsg] = useState('');
 
 const fetchData = async (pokemonInput) => {
   try {
-    const result = await fetch(pokemonEndpoint + pokemonInput);
-    const resultJson = await result.json();
+    const response = await fetch(pokemonEndpoint + pokemonInput);
+    const responseJson = await response.json();
     setErrorMsg('');
-    setData(resultJson);
+    setData(responseJson);
   } catch (e) {
     setData();
     setErrorMsg(`Sorry, we couldn't find any info about ${pokemonInput}`);
@@ -691,11 +691,11 @@ can use it like this:
 
 ```js
 const fetchData = async (pokemonInput) => {
-  const result = await fetch(pokemonEndpoint + pokemonInput);
-  if (result.ok) {
-    const resultJson = await result.json();
+  const response = await fetch(pokemonEndpoint + pokemonInput);
+  if (response.ok) {
+    const responseJson = await response.json();
     setErrorMsg('');
-    setData(resultJson);
+    setData(responseJson);
   } else {
     setData();
     setErrorMsg(`Sorry, we couldn't find any info about ${pokemonInput}`);
@@ -712,7 +712,7 @@ Let's extract some data out of the API response and display it in a nicer way to
 the users:
 
 ```js
-  // PokemonInfo.js
+  // inside PokemonInfo.js
 
   let abilitiesList;
   if (data && data.abilities) {
