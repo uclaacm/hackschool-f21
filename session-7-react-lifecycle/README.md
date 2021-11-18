@@ -150,12 +150,12 @@ the user will have some content to see.
 (warning: do not try this at home)
 
 ```js
-function App() {
+function CatFact() {
   const [fact, setFact] = useState("Generate a cat fact!");
   const getFact = async () => {...};
   getFact(); // <-- add this line to our code
   return (
-    <div classid="App">
+    <div>
       <button onClick={getFact}>Get cat fact</button>
       <div>{fact}</div>
     </div>
@@ -251,7 +251,7 @@ function CatFact() {
   }, []);
  
   return (
-    <div classid='App'>
+    <div>
       <button onClick={getFact}>Get new cat fact</button>
       <div>{fact}</div>
     </div>
