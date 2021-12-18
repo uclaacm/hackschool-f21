@@ -12,6 +12,7 @@
 
 - [Slides](https://docs.google.com/presentation/d/17aHHxXlZU3Z41GkOuie01CO5lXqk-2qebzNnSoEfZ50/edit?usp=sharing)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
+- [Workshop Recording](https://youtu.be/PHCD0GnREU8)
 
 ---
 
